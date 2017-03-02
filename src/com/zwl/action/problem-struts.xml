@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="problem" extends="json-default">
+		<action name="problem" class="problemAction">
+			<result>index.jsp</result>
+			<result name="state" type="json">
+				<param name="root">state</param>
+			</result>
+			<result name="problemInfo">problem_info.jsp</result>
+			<result name="sortProblemPage">sort_problem_list.jsp</result>
+			<result name="wendaPage">wenda.jsp</result>
+			<result name="myProblemListPage">my_problem_list.jsp</result>
+		</action>
+	</package>
+</struts>

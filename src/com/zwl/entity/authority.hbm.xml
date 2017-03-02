@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.zwl.entity">
+    <class name="Authority" table="t_authority" >
+        <id name="id" type="integer">
+            <column name="authority_id" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" not-null="true" />
+        </property>
+        <property name="state" type="integer">
+            <column name="state" />
+        </property>
+        <property name="url" type="string">
+            <column name="url" not-null="true" />
+        </property>
+        <many-to-one name="role" class="Role"  column="role_id" lazy="false"/>
+     </class>
+</hibernate-mapping>

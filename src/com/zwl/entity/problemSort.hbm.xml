@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.zwl.entity">
+    <class name="ProblemSort" table="t_problem_sort" >
+        <id name="id" type="integer">
+            <column name="sort_id" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" not-null="true" />
+        </property>
+        <property name="state" type="integer">
+            <column name="state" />
+        </property>
+        <property name="addTime" type="timestamp">
+            <column name="add_time" sql-type="datetime" />
+        </property>
+        <set name="problems" cascade="save-update" lazy="extra" order-by="id">
+            <key column="sort_id"></key>
+            <one-to-many class="Problem"/>
+        </set>
+     </class>
+</hibernate-mapping>

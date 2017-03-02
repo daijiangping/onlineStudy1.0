@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="user" extends="json-default">
+		<action name="user" class="userAction">
+			<result name="index">home.jsp</result>
+			<result name="state" type="json">
+				<param name="root">state</param>
+			</result>
+			<result name="updateHeadSuc" type="redirect">upload_head_suc.jsp</result>
+			<result name="updateHeadFail" type="redirect">upload_head_fail.jsp</result>
+		</action>
+
+	</package>
+
+</struts>

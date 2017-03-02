@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.zwl.entity">
+    <class name="Problem" table="t_problem" >
+        <id name="id" type="integer">
+            <column name="problem_id" />
+            <generator class="native" />
+        </id>
+        <property name="title" type="string">
+            <column name="title" not-null="true" />
+        </property>
+        <property name="content" type="string">
+            <column name="content"  sql-type="longtext"/>
+        </property>
+        <property name="state" type="integer">
+            <column name="state" />
+        </property>
+        <property name="addTime" type="timestamp">
+            <column name="add_time" sql-type="datetime" />
+        </property>
+        <property name="answerNumber" type="int">
+            <column name="answer_number" />
+        </property>
+        <many-to-one name="user" class="User"  column="user_id" lazy="false"/>
+        <many-to-one name="problemSort" class="ProblemSort"  column="sort_id" lazy="false"/>
+        <set name="answers" cascade="all" lazy="extra" order-by="id" >
+            <key column="problem_id"></key>
+            <one-to-many class="Answer"/>
+        </set>
+     </class>
+</hibernate-mapping>

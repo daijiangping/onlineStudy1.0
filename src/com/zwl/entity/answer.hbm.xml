@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zwl.entity">
+    <class name="Answer" table="t_answer" >
+        <id name="id" type="integer">
+            <column name="answer_id" />
+            <generator class="native" />
+        </id>
+        <property name="content" type="string">
+            <column name="content"  sql-type="longtext"/>
+        </property>
+        <property name="support" type="int">
+            <column name="support"/>
+        </property>
+        <property name="oppose" type="int">
+            <column name="oppose"/>
+        </property>
+        <property name="addTime" type="timestamp">
+            <column name="add_time" sql-type="datetime" />
+        </property>
+        <many-to-one name="user" class="User"  column="user_id" lazy="false"/>
+        <many-to-one name="problem" class="Problem"  column="problem_id" lazy="false"/>
+     </class>
+</hibernate-mapping>

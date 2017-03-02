@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.zwl.entity">
+    <class name="User" table="t_user" >
+        <id name="id" type="integer">
+            <column name="user_id" />
+            <generator class="native" />
+        </id>
+        <property name="userName" type="string">
+            <column name="user_name" not-null="true" />
+        </property>
+        <property name="realName" type="string">
+            <column name="real_name" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" not-null="true" />
+        </property>
+        <property name="headImg" type="string">
+            <column name="head_img" />
+        </property>
+        <property name="tell" type="string">
+            <column name="tell" />
+        </property>
+        <property name="state" type="integer">
+            <column name="state" />
+        </property>
+        <property name="addTime" type="timestamp">
+            <column name="add_time" sql-type="datetime" />
+        </property>
+        <many-to-one name="role" class="Role"  column="role_id" lazy="false"/>
+        <set name="problems" cascade="save-update" lazy="extra" order-by="id">
+            <key column="user_id"></key>
+            <one-to-many class="Problem"/>
+        </set>
+     </class>
+</hibernate-mapping>
